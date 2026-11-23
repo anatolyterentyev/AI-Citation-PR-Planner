@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Citation PR Plan</title>
+<style>
+:root{--bg:#f7f4ee;--card:#fffdf9;--ink:#1f1d1a;--muted:#6b665e;--line:#e4ddd0;--accent:#8a5a2b;--good:#2f7d4f;--mid:#b07d1c;--bad:#b0412e;--chip:#efe8db}
+@media (prefers-color-scheme:dark){:root{--bg:#16140f;--card:#1f1c16;--ink:#efe9de;--muted:#a59d8f;--line:#363127;--accent:#d9a46a;--good:#5fbf86;--mid:#e0b04a;--bad:#e2755f;--chip:#2b271f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:24px 0 8px}.sub{color:var(--muted);margin:0 0 20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}.kpi b{display:block;font-size:24px}.kpi span{color:var(--muted);font-size:12px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tab{background:none;border:0;padding:10px 14px;font:inherit;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
+.tab.on{color:var(--ink);border-color:var(--accent);font-weight:600}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:900px}th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:var(--chip);font-size:12px;text-transform:uppercase;letter-spacing:.03em;cursor:pointer;white-space:nowrap}
+th:after{content:" \2195";color:var(--muted)}tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-variant-numeric:tabular-nums}a{color:var(--accent)}
+.s{display:inline-block;min-width:34px;text-align:center;padding:2px 6px;border-radius:6px;font-weight:600;font-variant-numeric:tabular-nums}
+.hi{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}.md{background:color-mix(in srgb,var(--mid) 18%,transparent);color:var(--mid)}.lo{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.why{color:var(--muted);font-size:12px;min-width:320px;max-width:460px}
+.proof{font-size:12px;min-width:280px;max-width:420px}
+.flag{display:inline-block;margin-top:4px;font-size:11px;font-weight:600;color:var(--bad)}
+.new{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:999px;font-size:11px;font-weight:600;background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}
+.chip{display:inline-block;background:var(--chip);border-radius:999px;padding:3px 10px;margin:3px 4px 3px 0;font-size:13px}
+.mm{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.mm h3{margin:0 0 6px;font-size:14px;color:var(--accent)}
+.dl{display:inline-block;margin:0 8px 12px 0;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;font:inherit}
+hr.sep{border:0;border-top:1px solid var(--line);margin:6px 0}
+ul{margin:6px 0 0 18px;padding:0}li{margin:3px 0}
+</style></head><body><div class="wrap">
+<h1 id="title">AI citation PR plan</h1>
+<p class="sub" id="subtitle"></p>
+<div class="kpis" id="kpis"></div>
+<div class="tabs" role="tablist">
+<button class="tab on" data-t="p1">1 · PR articles (publish new)</button>
+<button class="tab" data-t="p2">2 · Link insertions (existing articles)</button>
+<button class="tab" data-t="p3">Mind map</button>
+<button class="tab" data-t="p4">Cited, not on Collaborator</button>
+<button class="tab" data-t="p5">Method</button>
+</div>
+<section class="panel on" id="p1">
+<p>Where to publish a <b>new PR article</b>. Each engine was asked: <i>"Is this website trustworthy and editorially independent as a source you would cite?"</i> and scored it 0–100. Rows marked <b>cited</b> already appear in AI answers; <b>catalog</b> rows were found in the Collaborator.pro catalog and are not cited yet. Priority = 0.6 × average trust + 15 × engines citing it + 2 × citations (max 5). Red notes are warnings.</p>
+<button class="dl" data-csv="pr">Download sheet 1 (CSV)</button>
+<div class="tw"><table id="t1"></table></div>
+</section>
+<section class="panel" id="p2">
+<p>Articles that <b>already appear in AI answers</b> and live on sites sold on Collaborator.pro. Ask the publisher to <b>add a link to the product</b> in that exact article.</p>
+<button class="dl" data-csv="li">Download sheet 2 (CSV)</button>
+<div class="tw"><table id="t2"></table></div>
+</section>
+<section class="panel" id="p3"><div class="mm" id="mm"></div></section>
+<section class="panel" id="p4">
+<p>Domains the engines cited that Collaborator.pro does <b>not</b> sell: targets for direct outreach, reviews or listicle inclusion. The most useful ones are cited by several engines.</p>
+<button class="dl" data-csv="na">Download (CSV)</button>
+<div class="tw"><table id="t4"></table></div>
+</section>
+<section class="panel" id="p5"><div class="card">
+<h2 style="margin-top:0">How this was produced</h2>
+<ul id="method"></ul>
+<p class="sub" style="margin-top:12px">Each engine answered every prompt once, through its own live web search, so citations vary between runs: re-run regularly and watch the trend. Trust scores are each model's own opinion, never substituted by another model. Made with the open-source <a href="https://github.com/anatolyterentyev/AI-Citation-PR-Planner" target="_blank" rel="noopener">AI Citation PR Planner</a> on <a href="https://flymy.ai" target="_blank" rel="noopener">FlyMyAI</a>.</p>
+</div></section>
+</div>
+<script src="data.js"></script>
+<script>
+const P=window.PLAN||{engines:{},summary:{product_mentioned:{}},pr:[],li:[],na:[],mind_map:{},runs:[],product:{}};
+const E=Object.entries(P.engines||{});
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sc=v=>v==null?"–":`<span class="s ${v>=60?"hi":v>=40?"md":"lo"}">${v}</span>`;
+const link=(u,t)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t||u)}</a>`:"";
+const short=u=>String(u||"").replace(/^https?:\/\/(www\.)?/,"");
+const proof=l=>l&&l.length?`<div class="proof">${l.map(c=>`<b>${esc(c.label)}</b> cited it for <i>“${esc(c.prompt)}”</i><br>${link(c.url,short(c.url).slice(0,60))}${c.round?` · ${esc(c.round)}`:""}${c.date?`, ${esc(c.date)}`:""}${c.run?` · run ${esc(c.run)}`:""}`).join('<hr class="sep">')}</div>`:`<div class="why">Not cited in any of the ${P.summary.answers||0} AI answers collected.</div>`;
+const flags=o=>(o.flags||[]).map(f=>`<br><span class="flag">${esc(f)}</span>`).join("");
+const name=P.product&&P.product.name||"the product";
+document.getElementById("title").textContent=`AI citation PR plan · ${name}`;
+document.getElementById("subtitle").textContent=`Which websites ${E.map(e=>e[1]).join(", ")} cite for ${P.summary.prompts||0} prompts where ${name} should be the answer, filtered to sites sold on Collaborator.pro.${P.generated_at?" Generated "+P.generated_at+".":""}`;
+const S=P.summary||{};
+document.getElementById("kpis").innerHTML=[
+ [S.answers,`AI answers collected (${S.prompts} prompts, ${E.length} engines)`],[S.unique_cited_domains,"unique cited domains"],
+ [S.available_on_collaborator,"cited sites sold on Collaborator.pro"],[P.pr.length,"PR options in sheet 1"],
+ [E.map(e=>(S.product_mentioned||{})[e[0]]||0).join(" / "),`${name} mentioned (${E.map(e=>e[1]).join(" / ")})`]
+].map(([b,s])=>`<div class="kpi"><b>${esc(b??"–")}</b><span>${esc(s)}</span></div>`).join("");
+function table(id,cols,rows){const el=document.getElementById(id);let st={k:null,d:1};
+ function draw(){let r=[...rows];if(st.k){const c=cols.find(c=>c.k===st.k);r.sort((a,b)=>{const x=c.v?c.v(a):a[c.k],y=c.v?c.v(b):b[c.k];return(typeof x==="number"&&typeof y==="number"?x-y:String(x??"").localeCompare(String(y??"")))*st.d})}
+  el.innerHTML=`<thead><tr>${cols.map(c=>`<th data-k="${c.k}">${c.h}</th>`).join("")}</tr></thead><tbody>${r.map(o=>`<tr>${cols.map(c=>`<td class="${c.n?"n":""}">${c.f?c.f(o):esc(o[c.k])}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  el.querySelectorAll("th").forEach(th=>th.onclick=()=>{const k=th.dataset.k;st={k,d:st.k===k?-st.d:-1};draw()})}draw()}
+const trustCols=E.map(([k,l])=>({k:"t_"+k,h:esc(l),n:1,v:o=>o.trust[k]??-1,f:o=>sc(o.trust[k])}));
+table("t1",[
+ {k:"domain",h:"Website",f:o=>`<b>${esc(o.domain)}</b>${o.added?` <span class="new">new on Collaborator (${esc(String(o.added).replace(/_/g," "))})</span>`:""}${flags(o)}`},
+ {k:"source",h:"Source"},
+ {k:"priority",h:"Priority",n:1,f:o=>sc(o.priority)},
+ {k:"trust_avg",h:"Trust avg",n:1,v:o=>o.trust_avg??-1,f:o=>sc(o.trust_avg)},
+ ...trustCols,
+ {k:"proof",h:"AI citation proof",v:o=>o.citations.length,f:o=>proof(o.citations)},
+ {k:"price",h:"Price",v:o=>parseFloat(String(o.price).replace(/\s/g,""))||0},{k:"dr",h:"DR",n:1},
+ {k:"organic_traffic",h:"Organic visits",n:1,v:o=>Number(o.organic_traffic)||0,f:o=>o.organic_traffic!=null?Number(o.organic_traffic).toLocaleString("en-US"):"–"},
+ {k:"link_type",h:"Link"},{k:"collaborator_url",h:"Collaborator",f:o=>link(o.collaborator_url,"Open")},
+ {k:"why",h:"Why (each engine)",f:o=>`<div class="why">${E.map(([k,l])=>o.reasons[k]?`<b>${esc(l)}:</b> ${esc(o.reasons[k])}`:"").filter(Boolean).join("<br>")}</div>`}
+],P.pr);
+table("t2",[
+ {k:"article_url",h:"Cited article",f:o=>link(o.article_url,short(o.article_url))+flags(o)},
+ {k:"proof",h:"AI citation proof",v:o=>o.citations.length,f:o=>proof(o.citations)},
+ {k:"price",h:"Price",v:o=>parseFloat(String(o.price).replace(/\s/g,""))||0},{k:"dr",h:"DR",n:1},{k:"link_type",h:"Link"},
+ {k:"trust_avg",h:"Trust avg",n:1,v:o=>o.trust_avg??-1,f:o=>sc(o.trust_avg)},
+ {k:"suggested_anchor",h:"Suggested anchor"},{k:"pitch",h:"Pitch",f:o=>`<div class="why" style="color:var(--ink)">${esc(o.pitch)}</div>`},
+ {k:"collaborator_url",h:"Collaborator",f:o=>link(o.collaborator_url,"Open")}
+],P.li);
+table("t4",[{k:"domain",h:"Domain",f:o=>link("https://"+o.domain,o.domain)},{k:"n_engines",h:"# engines",n:1,v:o=>o.engines.length,f:o=>o.engines.length},{k:"engines",h:"Cited by",f:o=>esc(o.engines.join(", "))},{k:"citations",h:"Citations",n:1}],P.na);
+document.getElementById("mm").innerHTML=`<div class="card" style="grid-column:1/-1"><h3>${esc(name)}</h3>Every prompt was sent verbatim to every engine.</div>`+Object.entries(P.mind_map||{}).map(([b,ps])=>`<div class="card"><h3>${esc(b)}</h3>${ps.map(p=>`<span class="chip">${esc(p)}</span>`).join("")}</div>`).join("");
+document.getElementById("method").innerHTML=[
+ `Engines: ${E.map(e=>esc(e[1])).join(", ")}, each answering with its own live web search.`,
+ `${S.answers||0} answers to ${S.prompts||0} prompts; ${S.unique_cited_domains||0} cited domains after dropping app stores, social networks, the product's own site and competitors' sites.`,
+ `${S.available_on_collaborator||0} cited domains are sold on Collaborator.pro${S.catalog_candidates?`, plus ${S.catalog_candidates} catalog candidates`:""}.`,
+ S.unresolved_links?`${S.unresolved_links} cited links could not be resolved to a real page and were left out.`:"",
+ ...(P.runs||[]).map(r=>`${esc(r.round||"Run")}, ${esc(r.label)}${r.date?", "+esc(r.date):""}${r.run?": run "+esc(r.run):""} (${r.answers} answers)`)
+].filter(Boolean).map(x=>`<li>${x}</li>`).join("");
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab,.panel").forEach(x=>x.classList.remove("on"));t.classList.add("on");document.getElementById(t.dataset.t).classList.add("on")});
+const flat=(rows,k)=>rows.map(r=>{const o={};for(const[key,v]of Object.entries(r)){if(key==="citations")o.ai_citation_proof=v.map(c=>`${c.label} | "${c.prompt}" | ${c.url}${c.run?" | run "+c.run:""}`).join(" || ")||"not cited";else if(key==="trust"){for(const[e,s]of Object.entries(v))o["trust_"+e]=s}else if(key==="reasons"){for(const[e,s]of Object.entries(v))o["reason_"+e]=s}else o[key]=Array.isArray(v)?v.join("; "):v}return o});
+function csv(rows){if(!rows.length)return"";const k=Object.keys(rows[0]);return[k.join(","),...rows.map(r=>k.map(x=>`"${String(r[x]??"").replace(/"/g,'""')}"`).join(","))].join("\n")}
+const names={pr:"pr_articles.csv",li:"link_insertions.csv",na:"cited_not_on_collaborator.csv"};
+document.querySelectorAll("[data-csv]").forEach(b=>b.onclick=()=>{const k=b.dataset.csv;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv(flat(P[k]))],{type:"text/csv"}));a.download=names[k];document.body.appendChild(a);a.click();a.remove()});
+</script></body></html>
